@@ -9,10 +9,24 @@ ws = wb['Sheet1']
 r = 1
 data = []
 for row in ws:
+	sum = 0.0
 	if r != 1:
+		sum += ws.cell(row = r, column = 3).value * 0.3
+		sum += ws.cell(row = r, column = 4).value * 0.35
+		sum += ws.cell(row = r, column = 5).value * 0.34
+		sum += ws.cell(row = r, column = 6).value
+		ws.cell(row = r, column = 7, value = sum)
+
 		data.append(ws.cell(row = r, column = 7).value)
-		#print(data)
 	r += 1
+
+#r = 1
+#data = []
+#for row in ws:
+#	if r != 1:
+#		data.append(ws.cell(row = r, column = 7).value)
+#		#print(data)
+#	r += 1
 lst = np.array(data)
 a = np.quantile(lst, 0.7)
 b = np.quantile(lst, 0.3)
