@@ -35,9 +35,9 @@ aLst = []
 bLst = []
 cLst = []
 for v in data:
-	if v >= a:
+	if v > a:
 		aLst.append(v)
-	elif v>= b:
+	elif v > b:
 		bLst.append(v)
 	else:
 		cLst.append(v)
@@ -50,15 +50,15 @@ r = 1
 for row in ws:
 	score = ws.cell(row = r, column = 7).value
 	if r != 1:
-		if score >= aPlusCut:
+		if score > aPlusCut:
 			ws.cell(row = r, column = 8, value = "A+")
 		elif score >= a:
 			ws.cell(row = r, column = 8, value = "A0")
-		elif score >= bPlusCut:
+		elif score > bPlusCut:
 			ws.cell(row = r, column = 8, value = "B+")
 		elif score >= b:
 			ws.cell(row = r, column = 8, value = "B0")
-		elif score >= cPlusCut:
+		elif score > cPlusCut:
 			ws.cell(row = r, column = 8, value = "C+")
 		else:
 			ws.cell(row = r, column = 8, value = "C0")
