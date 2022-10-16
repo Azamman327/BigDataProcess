@@ -52,11 +52,11 @@ for row in ws:
 	if r != 1:
 		if score > aPlusCut:
 			ws.cell(row = r, column = 8, value = "A+")
-		elif score >= a:
+		elif score > a:
 			ws.cell(row = r, column = 8, value = "A0")
 		elif score > bPlusCut:
 			ws.cell(row = r, column = 8, value = "B+")
-		elif score >= b:
+		elif score > b:
 			ws.cell(row = r, column = 8, value = "B0")
 		elif score > cPlusCut:
 			ws.cell(row = r, column = 8, value = "C+")
