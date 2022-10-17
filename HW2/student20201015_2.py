@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from openpyxl import load_workbook 
 
-wb = load_workbook(filename = 'student.xlsx')
+wb = load_workbook(filename = 'student_2.xlsx')
 ws = wb['Sheet1']
 
 total = {}
@@ -59,6 +59,6 @@ for i in range(0, len(total_sort)):
 		r = total[total_sort[i]]
 		ws.cell(row = r, column = 8, value = "C0")
 		
-wb.save("student.xlsx")
+wb.save("student_2.xlsx")
 		
 
