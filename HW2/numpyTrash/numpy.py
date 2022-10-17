@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 
 import numpy as np
 
-wb = load_workbook(filename = 'student.xlsx')
+wb = load_workbook(filename = 'numpy.xlsx')
 ws = wb['Sheet1']
 
 r = 1
@@ -64,6 +64,6 @@ for row in ws:
 			ws.cell(row = r, column = 8, value = "C0")
 	r += 1
 
-wb.save("student.xlsx")
+wb.save("numpy.xlsx")
 		
 

@@ -22,18 +22,20 @@ total_sort = sorted(total)
 total_sort.reverse()
 print(total_sort)
 
-aCutIdx = int(len(total_sort) * (3/10)) - 1
+aCutIdx = int(len(total_sort) * 0.3) - 1
+print(aCutIdx)
+#aCutIdx = int(len(total_sort) * 0.3) - 1
 aCut = total_sort[aCutIdx]
-print(aCut, ", ", aCutIdx)
-bCutIdx = int(len(total_sort) * (7/10)) - 1
+print("aCut is " , aCut, ", ", aCutIdx)
+bCutIdx = int(len(total_sort) * 0.7) - 1
 bCut = total_sort[bCutIdx]
-print(bCut, ", ", bCutIdx)
+print("bCut is ", bCut, ", ", bCutIdx)
 
-aPCutIdx = int(aCutIdx * (5/10))
+aPCutIdx = int(aCutIdx * 0.5)
 aPlusCut = total_sort[aPCutIdx]
-bPCutIdx = int((bCutIdx - aCutIdx) * (5/10)) + aCutIdx
+bPCutIdx = int((bCutIdx - aCutIdx) * 0.5) + aCutIdx
 bPlusCut = total_sort[bPCutIdx]
-cPCutIdx = int((len(total_sort) - bCutIdx) * (5/10)) + bCutIdx
+cPCutIdx = int((len(total_sort) - bCutIdx) * 0.5) + bCutIdx
 cPlusCut = total_sort[cPCutIdx]
 print(aPlusCut, ", ", bPlusCut, ", ", cPlusCut)
 
