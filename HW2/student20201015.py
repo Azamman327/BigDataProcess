@@ -35,18 +35,19 @@ aPCutIdx = int(aCutIdx * 0.5)
 aPlusCut = total_sort[aPCutIdx]
 bPCutIdx = int((bCutIdx - aCutIdx) * 0.5) + aCutIdx
 bPlusCut = total_sort[bPCutIdx]
-cPCutIdx = int((len(total_sort) - bCutIdx) * 0.5) + bCutIdx
+cPCutIdx = int((len(total_sort) - 1 - bCutIdx) * 0.5) + bCutIdx
+print(aPCutIdx)
+print(bPCutIdx)
+print(cPCutIdx)
 cPlusCut = total_sort[cPCutIdx]
 print(aPlusCut, ", ", bPlusCut, ", ", cPlusCut)
 
 for i in range(0, len(total_sort)):
 	if i <= aPCutIdx:
 		r = total[total_sort[i]]
-		print(r)
 		ws.cell(row = r, column = 8, value = "A+")
 	elif i <= aCutIdx:
 		r = total[total_sort[i]]
-		print(r)
 		ws.cell(row = r, column = 8, value = "A0")
 	elif i <= bPCutIdx:
 		r = total[total_sort[i]]
@@ -60,7 +61,7 @@ for i in range(0, len(total_sort)):
 	else:
 		r = total[total_sort[i]]
 		ws.cell(row = r, column = 8, value = "C0")
-		
+
 wb.save("student.xlsx")
 		
 
