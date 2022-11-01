@@ -13,15 +13,19 @@ for line in f:
 	#print(date)
 	day = calendar.weekday(int(date[2]), int(date[0]), int(date[1]))
 	#print(dayofweek[day])
-	list[1] = dayofweek[day]
+	list[1] = day
 
-	list[3] = list[3].replace("\n", "")
+	#list[3] = list[3].replace("\n", "")
 	
 	rslt.append(list)
-#print(rslt)
+
+rslt.sort()
+#for value in list:
+	
+
 wf = open(sys.argv[2], "wt")
 for uLine in rslt:
-	wf.write(uLine[0] + "," + uLine[1] + " " + uLine[2] + "," + uLine[3] + "\n")
-	print(uLine[0] + "," + uLine[1] + " " + uLine[2] + "," + uLine[3])
+	wf.write(uLine[0] + "," + dayofweek[uLine[1]] + " " + uLine[2] + "," + uLine[3])
+	print(uLine[0] + "," + dayofweek[uLine[1]] + " " + uLine[2] + "," + uLine[3], end="")
 f.close()
 wf.close()
