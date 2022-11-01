@@ -16,12 +16,12 @@ for line in f:
 	list[1] = dayofweek[day]
 
 	list[3] = list[3].replace("\n", "")
-
+	
 	rslt.append(list)
 #print(rslt)
 wf = open(sys.argv[2], "wt")
 for uLine in rslt:
-	wf.write(uLine[0] + "," + uLine[1] + "\t" + uLine[2] + "," + uLine[3] + "\n")
+	wf.write(uLine[0] + "," + uLine[1] + " " + uLine[2] + "," + uLine[3] + "\n")
 
 f.close()
 wf.close()
