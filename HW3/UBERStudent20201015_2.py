@@ -2,7 +2,7 @@
 import sys
 import calendar
 
-rslt = []
+rslt = {}
 dayofweek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
 f = open(sys.argv[1])
 
@@ -17,11 +17,15 @@ for line in f:
 
 	list[3] = list[3].replace("\n", "")
 	
-	rslt.append(list)
-#print(rslt)
+	key = (list[0] + "," + list[1])
+	print(key)
+	rslt[key] = (list[2] + "," + list[3])
+	print(rslt[key])
+print(rslt)
 wf = open(sys.argv[2], "wt")
-for uLine in rslt:
-	wf.write(uLine[0] + "," + uLine[1] + " " + uLine[2] + "," + uLine[3] + "\n")
-	print(uLine[0] + "," + uLine[1] + " " + uLine[2] + "," + uLine[3])
+for k, v in rslt.items():
+	wf.write(k + " " + v)
+	wf.write("\n")
+
 f.close()
 wf.close()
