@@ -26,6 +26,6 @@ rslt.sort()
 wf = open(sys.argv[2], "wt")
 for uLine in rslt:
 	wf.write(uLine[0] + "," + dayofweek[uLine[1]] + " " + uLine[2] + "," + uLine[3])
-	print(uLine[0] + "," + dayofweek[uLine[1]] + " " + uLine[2] + "," + uLine[3], end="")
+	#print(uLine[0] + "," + dayofweek[uLine[1]] + " " + uLine[2] + "," + uLine[3], end="")
 f.close()
 wf.close()
