@@ -14,6 +14,7 @@ def createDataSet(filePath):
 	for v in fileNames:
 		temp = v.split('/')
 		labelName = temp[1][0]
+		#print(temp[1], labelName)
 		labels.append(labelName)
 
 	data = []
@@ -35,17 +36,21 @@ def createDataSet(filePath):
 def classify0(inX, dataSet, labels, k):
 	dataSetSize = dataSet.shape[0]
 	diffMat = np.tile(inX, (dataSetSize, 1)) - dataSet
+	#print(diffMat)
 	sqDiffMat = diffMat ** 2
 	sqDistances = sqDiffMat.sum(axis = 1)
 	distances = sqDistances ** 0.5	
+	#print(distances)
 	sortedDistIndicies = distances.argsort()
+	#print(sortedDistIndicies)
 	classCount = {}
 	for i in range(k):
 		voteIlabel = labels[sortedDistIndicies[i]]
 		classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1
-#	print(classCount)
+	#print(classCount)
 	sortedClassCount = sorted(classCount.items(),
 		key = operator.itemgetter(1), reverse = True)
+	#print(sortedClassCount)
 	return sortedClassCount[0][0]
 
 filePath = str(sys.argv[1])
@@ -53,11 +58,9 @@ traindata, trainLabels = createDataSet(filePath)
 #print(traindata[0])
 #print(trainLabels)
 
-fileLength = 0
 for k in range(1, 21):
+	fileLength = 0
 	dirPath = str(sys.argv[2])
-	testGroup = []
-	testLabels = []
 	data = []
 
 	errorCount = 0
@@ -65,7 +68,8 @@ for k in range(1, 21):
 		fileLength += 1
 		fileName = str(file)
 		strSplit = fileName.split('_')
-		testLabels.append(strSplit[1][0])
+		testLabels = strSplit[0][-1]
+		#print(strSplit, strSplit[0][-1])
 		
 		f = open(file, "r")
 		content = f.read()
@@ -77,9 +81,9 @@ for k in range(1, 21):
 		#print(inX)
 		rslt = classify0(inX, traindata, trainLabels, k)
 		
-		#print(testLabels[-1])
-		if (testLabels[-1] != rslt):
+		#print(testLabels, rslt, testLabels[-1] == rslt)
+		if (testLabels != rslt):
 			errorCount += 1	
-
+	#print(errorCount)
 	errorRate = errorCount / fileLength * 100
 	print(int(errorRate))		
