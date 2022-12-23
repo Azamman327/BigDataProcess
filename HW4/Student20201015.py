@@ -64,7 +64,8 @@ for k in range(1, 21):
 	for file in Path(dirPath).iterdir():
 		fileLength += 1
 		fileName = str(file)
-		testLabels.append(fileName.split('_'))
+		strSplit = fileName.split('_')
+		testLabels.append(strSplit[1][0])
 		
 		f = open(file, "r")
 		content = f.read()
@@ -75,7 +76,8 @@ for k in range(1, 21):
 		inX = np.array(group)
 		#print(inX)
 		rslt = classify0(inX, traindata, trainLabels, k)
-
+		
+		#print(testLabels[-1])
 		if (testLabels[-1] != rslt):
 			errorCount += 1	
 
