@@ -3,6 +3,7 @@
 import numpy as np
 import operator
 from pathlib import Path
+import sys
 
 def createDataSet(filePath):
 	fileNames = []
@@ -47,20 +48,20 @@ def classify0(inX, dataSet, labels, k):
 		key = operator.itemgetter(1), reverse = True)
 	return sortedClassCount[0][0]
 
-filePath = 'trainingDigits'
+filePath = str(sys.argv[1])
 traindata, trainLabels = createDataSet(filePath)
 #print(traindata[0])
 #print(trainLabels)
 
 fileLength = 0
 for k in range(1, 21):
-	dir = 'testDigits'
+	dirPath = str(sys.argv[2])
 	testGroup = []
 	testLabels = []
 	data = []
 
 	errorCount = 0
-	for file in Path(dir).iterdir():
+	for file in Path(dirPath).iterdir():
 		fileLength += 1
 		fileName = str(file)
 		testLabels.append(fileName.split('_'))
